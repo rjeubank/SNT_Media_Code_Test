@@ -33,7 +33,7 @@ class urlContentReader{
 	}
 
 	function displayContent(){
-		echo '<img src="' . $this->imagePath . '" />';
+		echo '<img src="' . $this->imagePath . '" /><br>';
 		echo "Headline: " .  $this->headline . "<br>";
 		echo "Article:<br>";
 		foreach($this->arrArticle as $paragraph)

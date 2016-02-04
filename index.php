@@ -1,8 +1,8 @@
 <html>
 <body>
-<form action="index.php" method="GET">
+<form action="index.php" method="POST">
  
-Enter Article URL
+Enter Article URL:
 <input type="text" name="urlText">
  
 <input type="submit" name="submit" value="Submit">
@@ -10,12 +10,17 @@ Enter Article URL
 </body>
 </html>
 <?php
+//Just a simple check to see if there is a post for url and also with error handling should it not be a cnn.com article
 require_once('class.urlContentReader.php');
 
-if(isset($_GET["urlText"]))
+if(isset($_POST["urlText"]))
 {
-	$cnnArticle = new urlContentReader($_GET["urlText"]);
-	$cnnArticle->displayContent();
+	if(strpos($_POST["urlText"],'cnn.com')){
+		$cnnArticle = new urlContentReader($_POST["urlText"]);
+		$cnnArticle->displayContent();
+	}
+	else
+		echo "Please enter a CNN news article";
 }
 
 
